@@ -2,20 +2,27 @@ const mongoose=require('mongoose');
 
 
 const userSchema= new mongoose.Schema({
-    name:{
+    username:{
         type:String,
         required:true
     },
     email:{
         type:String,
         required:true,
-        unique:true
+        unique:true,
+        match: [/.+\@.+\..+/, 'Please enter a valid email address'],
     },
     createdAt:{
         type:Date,
         default:Date.now
-    }
-});
+    },
+    password: {
+        type: String,
+        required: true,
+      },
+
+}
+, { timestamps: true });
 
 const User = mongoose.model('User',userSchema);
 module.exports=User;
