@@ -1,0 +1,43 @@
+<div class="login-container d-flex align-items-center justify-content-center vh-100">
+    <div class="login-card card shadow-lg">
+      <div class="card-header text-center py-4 bg-primary text-white">
+        <h3 class="mb-0">Sign In</h3>
+      </div>
+      <div class="card-body p-5">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <!-- Email Field -->
+          <div class="mb-4">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" class="form-control rounded-pill" formControlName="email" placeholder="Enter your email" required>
+            <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger small mt-1">
+              Valid email is required.
+            </div>
+          </div>
+  
+          <!-- Password Field -->
+          <div class="mb-4">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" class="form-control rounded-pill" formControlName="password" placeholder="Enter your password" required>
+            <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger small mt-1">
+              Password is required and must be at least 6 characters long.
+            </div>
+          </div>
+  
+          <!-- Submit Button -->
+          <div class="d-grid gap-2 mb-4">
+            <button type="submit" class="btn btn-primary rounded-pill" [disabled]="loginForm.invalid">Sign In</button>
+          </div>
+  
+          <!-- Success and Error Messages -->
+          <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
+          <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+  
+          <!-- Footer Link -->
+          <div class="text-center mt-3">
+            <p class="mb-0">Don't have an account? <a href="/register" class="text-primary">Sign Up</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
