@@ -16,4 +16,12 @@ export class AuthService {
   login(credentials: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials);
   }
-}
+  isAuthenticated(): boolean {
+    // Ensure window object (and localStorage) exists before accessing it
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      return !!token; // Returns true if token exists, false otherwise
+    }
+    return false;
+  }
+}  
