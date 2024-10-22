@@ -1,3 +1,6 @@
 saas-dashboard-frontend/node_modules/
 saas-dashboard-backend/node_modules/
 .env
+
+saas-dashboard-frontend/.angular/
+saas-dashboard-frontend/.vscode/
