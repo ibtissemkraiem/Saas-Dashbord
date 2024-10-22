@@ -1,0 +1,46 @@
+// Background color for the body
+body {
+    background-color: #f8f9fa; // Light gray background
+  }
+  
+  // Center the container vertically and horizontally
+  .login-container {
+    height: 100vh; // Full height
+  }
+  
+  // Style for the login card
+  .login-card {
+    border-radius: 1.5rem; // Rounded corners
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); // Soft shadow
+  
+    // Responsive design for mobile view
+    @media (max-width: 576px) {
+      margin: 0 20px; // Margin for mobile devices
+    }
+  }
+  
+  // Form field styles
+  .form-control {
+    border-radius: 1.25rem; // Rounded inputs
+  }
+  
+  // Button styles
+  .btn {
+    background-color: #007bff; // Bootstrap primary color
+    border-radius: 1.25rem; // Rounded button
+    font-weight: bold;
+  
+    &:hover {
+      background-color: darken(#007bff, 10%); // Darker shade on hover
+    }
+  }
+  
+  // Error and success messages
+  .text-danger {
+    font-size: 0.875rem; // Slightly smaller font for error messages
+  }
+  
+  .alert {
+    border-radius: 0.75rem; // Rounded corners for alerts
+  }
+  

@@ -5,11 +5,11 @@ import {
   DomRendererFactory2,
   EVENT_MANAGER_PLUGINS,
   EventManagerPlugin
-} from "./chunk-WWF7Y63Y.js";
+} from "./chunk-PBSPOI3C.js";
 import {
   HTTP_ROOT_INTERCEPTOR_FNS,
   HttpClientModule
-} from "./chunk-OM6NLCIY.js";
+} from "./chunk-MJCIUX4X.js";
 import {
   DOCUMENT,
   NullViewportScroller,
@@ -19,7 +19,7 @@ import {
   XhrFactory,
   getDOM,
   setRootDomAdapter
-} from "./chunk-WNZ4EUCV.js";
+} from "./chunk-EAFGYYQ3.js";
 import {
   ALLOW_MULTIPLE_PLATFORMS,
   ANIMATION_MODULE_TYPE,
@@ -50,6 +50,7 @@ import {
   inject,
   makeEnvironmentProviders,
   platformCore,
+  require_cjs,
   setClassMetadata,
   setDocument,
   whenStable,
@@ -57,10 +58,7 @@ import {
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵinject
-} from "./chunk-3RXKYMU5.js";
-import {
-  require_cjs
-} from "./chunk-2H3L6IVL.js";
+} from "./chunk-YDN5P6SV.js";
 import {
   __async,
   __objRest,
