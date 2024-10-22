@@ -69,10 +69,51 @@ const deleteUser = async(req, res)=>{
     }
 };
 
+const getTotalUsers = async(req,res)=>{
+    try{
+        const totalUsers = await User.countDocuments();
+        res.status(200).json({totalUsers});
+
+    }
+    catch(error){
+        res.status(500).json({message:'Error retreiving Total users', error})
+
+    }
+}
+
+//Get numbers of active Users
+const getActiveUsers= async(req,res)=>{
+    try{
+        const activeUsers = await User.countDocuments({isActive:true});
+        res.status(200).json({activeUsers});
+
+    }
+    catch{
+        res.status(500).json({ message: 'Error retrieving active users', error });
+
+    }
+}
+// Get number of new users in the last 7 days
+const getNewUsers = async (req, res) => {
+    try {
+      const lastWeek = new Date();
+      lastWeek.setDate(lastWeek.getDate() - 7); // Date for 7 days ago
+  
+      const newUsers = await User.countDocuments({ createdAt: { $gte: lastWeek } });
+      res.status(200).json({ newUsers });
+    } catch (error) {
+      res.status(500).json({ message: 'Error retrieving new users', error });
+    }
+  };
+
 module.exports={
     getUsers,
     getUserById,
     UpdateUser,
     deleteUser,
+    getTotalUsers,
+    getActiveUsers,
+    getNewUsers
+
 };
 

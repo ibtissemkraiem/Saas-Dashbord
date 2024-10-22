@@ -58,10 +58,13 @@ exports.loginUser=async(req,res)=>{
             return res.status(400).json({message:'Invalid credantials'})
 
         }
+        //Update isActive to true after successful login
+        user.isActive = true;
+        await user.save();
         //Generate a token
 
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.status(200).json({ token, user: { id: user._id, username: user.username, email: user.email } });
+        res.status(200).json({ token, user: { id: user._id, username: user.username, email: user.email,isActive:user.isActive } });
     }
 
     catch(error){
@@ -70,3 +73,19 @@ exports.loginUser=async(req,res)=>{
 
     }
 };
+
+
+exports.logout = async (req, res) => {
+    try {
+      // Assuming the user is authenticated and you have the userId from the token
+      const userId = req.user.id; // Example way to get the user ID from the request
+  
+      // Find the user and set isActive to false
+      await User.findByIdAndUpdate(userId, { isActive: false });
+  
+      res.status(200).json({ message: 'Logout successful' });
+    } catch (error) {
+      res.status(500).json({ message: 'Error logging out', error });
+    }
+  };
+  
