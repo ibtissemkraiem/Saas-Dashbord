@@ -1,0 +1,28 @@
+.profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.profile-header {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.profile-image {
+  transition: transform 0.3s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.upload-section {
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.btn-hover {
+  &:hover {
+    background-color: #0056b3;
+    color: #ffffff;
+  }
+}

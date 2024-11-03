@@ -1,5 +1,29 @@
-<div class="profile-container">
-    <h1>User Profile</h1>
-    <p>Profile works!</p>
+<div class="profile-container text-center">
+  <div class="profile-header bg-light p-4 rounded shadow-sm">
+    <div class="profile-image-section mb-4">
+      <img [src]="userProfile.profileImage" alt="Profile Image" 
+           class="profile-image rounded-circle border border-primary shadow"
+           style="width: 150px; height: 150px; object-fit: cover;">
+      <h2 class="username mt-3">{{ username }}</h2>
+      <p class="text-muted">{{ email }}</p>
+      <p class="join-date text-muted">Joined On: {{ joinDate }}</p>
+    </div>
+    
+    <div class="upload-section p-3 mt-3 rounded bg-white shadow-sm">
+      <label for="fileInput" class="form-label fw-bold text-primary d-flex justify-content-center align-items-center">
+        <i class="bi bi-upload me-2"></i> Select a New Profile Image
+      </label>
+      <input type="file" id="fileInput" class="form-control mb-3" (change)="onFileSelected($event)" />
+
+      <div *ngIf="previewUrl" class="text-center mb-3">
+        <img [src]="previewUrl" alt="Image preview" 
+             class="img-thumbnail rounded-circle"
+             style="width: 150px; height: 150px; object-fit: cover; border: 2px dashed #007bff;">
+      </div>
+
+      <button (click)="uploadImage()" class="btn btn-primary d-flex justify-content-center align-items-center">
+        <i class="bi bi-cloud-upload-fill me-2"></i> Upload Image
+      </button>
+    </div>
   </div>
-  
+</div>

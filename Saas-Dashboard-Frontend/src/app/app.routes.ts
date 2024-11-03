@@ -7,28 +7,31 @@ import { authGuard } from './auth.guard';
 import { AuthLayoutComponent } from './layouts/layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './layouts/layouts/main-layout/main-layout.component';
 import { UserProfileComponent } from './user-profile/user-profile/user-profile.component';
+//import { EditProfileComponent } from './user-profile/Edit-Profile/edit-profile/edit-profile.component';
 
 
 export const routes: Routes = [
     {
-        path: '', // Empty path for non-sidebar pages (login, register)
-        component: AuthLayoutComponent, // Auth layout (without sidebar)
+        path: '', 
+        component: AuthLayoutComponent,
         children: [
             { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent }
         ]
     },
     {
-        path: '', // Path for pages that include the sidebar (dashboard, user-statistics)
-        component: MainLayoutComponent, // Main layout (with sidebar)
+        path: '', 
+        component: MainLayoutComponent, 
         children: [
             { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
-            { path: 'profile', component: UserProfileComponent ,canActivate: [authGuard] },
+            { path: 'profile/:id', component: UserProfileComponent ,canActivate: [authGuard] },
+           // { path: 'EditProfile/:id', component: EditProfileComponent ,canActivate: [authGuard] },
            
         ]
     },
-    { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect to login if no route is matched
-    { path: '**', redirectTo: '/login' } // Catch-all for invalid routes, redirect to login
+    { path: '', redirectTo: '/login', pathMatch: 'full' }, 
+    { path: '**', redirectTo: '/login' } 
+    
 ];
 
 @NgModule({

@@ -1,6 +1,7 @@
 const express = require('express');
-const { getUsers, getUserById, UpdateUser, deleteUser,getTotalUsers,getActiveUsers ,getNewUsers} = require('../controllers/userController');
+const { getUsers, getUserById, UpdateUser, deleteUser,getTotalUsers,getActiveUsers ,getNewUsers,uploadProfileImage} = require('../controllers/userController');
 const verifyToken = require('../middleware/authMiddleware');
+const upload=require('../middleware/multer')
  // JWT middleware to protect routes
 
 const router = express.Router();
@@ -22,6 +23,6 @@ router.put('/:id', verifyToken, UpdateUser);
 // Route to delete a user (DELETE)
 router.delete('/:id', verifyToken, deleteUser);
 
-
+router.post('/upload-image', verifyToken,upload.single('image'),uploadProfileImage)
 
 module.exports = router;

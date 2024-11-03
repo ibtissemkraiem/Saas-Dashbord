@@ -30,6 +30,7 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes); 
 app.use('/api/users', userRoute);
+app.use('/uploads',express.static('uploads'),userRoute)
 
 // Start the server
 const PORT = process.env.PORT || 3000;

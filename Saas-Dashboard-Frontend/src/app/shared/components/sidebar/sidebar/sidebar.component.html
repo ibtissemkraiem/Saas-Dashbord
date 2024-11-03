@@ -6,21 +6,21 @@
     <nav class="sidebar-nav">
       <ul>
         <li>
-          <a href="/dashboard" class="active">
-            <i class="bi bi-house-door"></i> Dashboard
+          <a [routerLink]="['/dashboard']" routerLinkActive="active" class="bi bi-house-door">
+             Dashboard
+          </a>
+        </li>
+        <li>  
+            <a [routerLink]="['/profile',userId]" routerLinkActive="active" class="bi bi-person"> 
+            Profile
           </a>
         </li>
         <li>
-            <a routerLink="/profile" routerLinkActive="active">
-            <i class="bi bi-person"></i> Profile
+          <a [routerLink]="['/Settings']" routerLinkActive="active" class="bi bi-gear">
+            Settings
           </a>
         </li>
-        <li>
-          <a href="/settings">
-            <i class="bi bi-gear"></i> Settings
-          </a>
-        </li>
-        <li>
+      <!--  <li>
           <a href="/orders">
             <i class="bi bi-bag"></i> Orders
           </a>
@@ -34,7 +34,7 @@
           <a href="/logout">
             <i class="bi bi-box-arrow-right"></i> Logout
           </a>
-        </li>
+        </li>-->
       </ul>
     </nav>
   </aside>

@@ -11,6 +11,8 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar/sidebar.co
 import { MainLayoutComponent } from './layouts/layouts/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './layouts/layouts/auth-layout/auth-layout.component';
 import { UserProfileComponent } from './user-profile/user-profile/user-profile.component';
+import { RouterModule } from '@angular/router';
+import { EditProfileComponent } from './user-profile/Edit-Profile/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { UserProfileComponent } from './user-profile/user-profile/user-profile.c
 
     MainLayoutComponent,
     AuthLayoutComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    EditProfileComponent
   ],
   imports: [
     // other modules
@@ -29,7 +32,9 @@ import { UserProfileComponent } from './user-profile/user-profile/user-profile.c
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    RouterModule
+    
     
   ],
   providers: [],

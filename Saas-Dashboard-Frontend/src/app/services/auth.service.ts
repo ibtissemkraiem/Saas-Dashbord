@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   private apiUrl='http://localhost:3000/api/auth'; 
+  //private userId:string ;
+  private currentUserId: string | null = null;
 
   constructor(private http:HttpClient) { }
 
@@ -16,12 +18,28 @@ export class AuthService {
   login(credentials: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials);
   }
+
+  handleLogin(response:any){
+    this.currentUserId = response.user.id;
+    localStorage.setItem('userId',this.currentUserId!);
+  }
+ 
+  getCurrentUserId():string|null{
+    return this.currentUserId || localStorage.getItem('userId')
+  }
+  
+
+  
+ 
   isAuthenticated(): boolean {
-    // Ensure window object (and localStorage) exists before accessing it
-    if (typeof window !== 'undefined') {
+    
+   
+
       const token = localStorage.getItem('token');
-      return !!token; // Returns true if token exists, false otherwise
-    }
-    return false;
+      console.log(token);
+      return !!token; 
+    
+    
+    //return false;
   }
 }  

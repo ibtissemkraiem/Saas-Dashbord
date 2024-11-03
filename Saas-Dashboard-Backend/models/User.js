@@ -20,11 +20,13 @@ const userSchema= new mongoose.Schema({
         type: String,
         required: true,
       },
+      profileImage:String,
       isActive:{
         type: Boolean,
         default: true,
 
       }
+
 
 }
 , { timestamps: true });

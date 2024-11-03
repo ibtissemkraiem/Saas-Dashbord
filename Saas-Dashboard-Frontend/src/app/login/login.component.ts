@@ -38,6 +38,9 @@ export class LoginComponent {
       // Call the service to log in the user
       this.authService.login({ email, password }).subscribe(
         (response) => {
+          console.log(response)
+          localStorage.setItem('userId', response.user.id);
+          console.log(response.user.id);
           localStorage.setItem('token', response.token);
           this.successMessage = response.message; // Store the success message
           this.errorMessage = '';

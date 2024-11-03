@@ -1,6 +1,7 @@
 
 
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
 
 
 //Get All Users
@@ -37,7 +38,17 @@ const  getUserById = async (req,res)=>{
 const UpdateUser = async (req, res) => {
     try {
         const userId = req.params.id;
-        const updatedUser = await User.findByIdAndUpdate(userId, req.body, { new: true });
+        const updates={...req.body};
+
+
+        if(updates.password){
+            updates.password = await bcrypt.hash(updates.password,10);
+        }
+
+
+
+
+        const updatedUser = await User.findByIdAndUpdate(userId, updates, { new: true });
         
         if (!updatedUser) {
             return res.status(404).json({ message: 'User not found' });
@@ -106,6 +117,24 @@ const getNewUsers = async (req, res) => {
     }
   };
 
+  const uploadProfileImage= async(req,res)=>{
+    if(!req.file){
+        return res.status(400).send('No File uploaded');
+    }
+    const imagePath= req.file.path;
+   const userId = req.user.id;
+    //console.log(user.id)
+    console.log(req.user)
+
+    console.log(req.user.id)
+
+
+User.findByIdAndUpdate(userId,{profileImage: imagePath},{new:true})
+.then(user=>res.status(200).json({message:'Image Uploaded',user}))
+.catch(err=>res.status(500).json({message:'Error Image Updating'}))
+
+  };
+
 module.exports={
     getUsers,
     getUserById,
@@ -113,7 +142,8 @@ module.exports={
     deleteUser,
     getTotalUsers,
     getActiveUsers,
-    getNewUsers
+    getNewUsers,
+    uploadProfileImage
 
 };
 
