@@ -2,21 +2,25 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { UserProfileService } from '../services/user-profile.service';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { response } from 'express';
+import bootstrap from '../../../main.server';
 
 @Component({
   selector: 'app-user-profile',
   standalone: true,
   imports: [CommonModule,
+    ReactiveFormsModule,
     RouterModule,
-    FormsModule],
+    FormsModule,
+  ],
+    
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss'
 })
 export class UserProfileComponent implements OnInit{
   
-  userId:string | null= null;
+  userId: string | null = null;
   userProfile:any;
   username:String |null = null;
   email:String |null = null;
@@ -24,12 +28,20 @@ export class UserProfileComponent implements OnInit{
 previewUrl:string | ArrayBuffer | null=null;
 selectedFile:File | null=null;
 
-  constructor(private userProfileService:UserProfileService,private route:ActivatedRoute){}
-  isEditing = false;
+editProfileForm: FormGroup;
+errorMessage: string = '';  
+successMessage: string = '';
 
-toggleEdit() {
-  this.isEditing = !this.isEditing;
-}
+
+  constructor(private fb:FormBuilder,private userProfileService:UserProfileService,private route:ActivatedRoute){
+    this.editProfileForm=this.fb.group({
+      username:[''],
+      email:[''],
+    });
+  }
+ // isEditing = false;
+
+
 
 triggerFileInput() {
   const fileInput = document.getElementById('fileInput') as HTMLInputElement;
@@ -47,6 +59,8 @@ backendUrl: string = 'http://localhost:3000/';
         }
       }
     )
+
+   
   }
   loadUserProfile(userId: string) {
 
@@ -71,8 +85,38 @@ console.log(this.userProfile.profileImage)
     }
 
    )
+
+   console.log("hedha"+this.userProfile.username)
+
+   this.editProfileForm.patchValue(
+    {
+      username: this.userProfile.username,
+      email:this.userProfile.email
+     
+    }
+  )
+  }
+  EditProfile(){
+    if(this.editProfileForm.valid)
+      //const updatedData = this.editProfileForm.value;
+    this.userProfileService.EditProfile(this.userId,this.editProfileForm.value).subscribe(
+      response=>{
+        this.successMessage = response.message;
+
+        console.log('Profile updated successfully', response);
+       // this.closeModal();
+
+      },
+      (error)=>{
+        console.log('Error updating profile')
+        this.errorMessage = error.error.message; 
+      }
+
+    )
+
   }
 
+ 
 onFileSelected(event:Event){
   const input =event.target as HTMLInputElement;
   if(input.files && input.files[0]){
@@ -105,6 +149,8 @@ uploadImage() {
     );
   }
 }
+
+
 
 }
 

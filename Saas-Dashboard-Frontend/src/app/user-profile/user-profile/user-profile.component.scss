@@ -4,25 +4,121 @@
 }
 
 .profile-header {
-  background-color: #f8f9fa;
+  background-color: #fef6f9; /* Light pink */
   border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  color: #6d4c5b; /* Soft pink-brown for text */
 }
 
 .profile-image {
+  border-radius: 50%; /* Circular image */
   transition: transform 0.3s;
   &:hover {
     transform: scale(1.05);
   }
 }
 
+.custom-pink-label {
+  color: #fc5c7d;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  i {
+    margin-right: 8px;
+  }
+}
+
 .upload-section {
   background-color: #ffffff;
   border-radius: 8px;
+  padding: 10px;
+  border: 1px solid #e2c2c9;
 }
 
 .btn-hover {
   &:hover {
-    background-color: #0056b3;
+    background-color: #fc5c7d;
     color: #ffffff;
+  }
+}
+
+.modal-content {
+  background: #fef6f9; 
+  border: none;
+  border-radius: 15px;
+  max-width: 450px; 
+  margin: auto;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  background: #f596b9; 
+  color: #fff;
+  border-bottom: none;
+  padding: 15px;
+  border-radius: 15px 15px 0 0;
+}
+
+.modal-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.btn-close {
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.form-label {
+  color: #6d4c5b; 
+  font-weight: 400;
+}
+
+.form-control {
+  background: #fff;
+  border: 1px solid #e2c2c9;
+  color: #333;
+  border-radius: 8px;
+  box-shadow: none;
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-color: #fc5c7d;
+    box-shadow: 0 0 5px rgba(252, 92, 125, 0.5); /* Pink glow */
+  }
+}
+
+.btn-primary {
+  background-color: #fc5c7d;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+
+  &:hover {
+    background-color: #e2506f; /* Darker pink on hover */
+  }
+}
+
+.btn-pink {
+  background-color: #fc5c7d;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  &:hover {
+    background-color: #ff8ba7; /* Lighter pink */
   }
 }

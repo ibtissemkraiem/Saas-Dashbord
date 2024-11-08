@@ -5,7 +5,7 @@
       </div>
       <div class="card-body p-5">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <!-- Email Field -->
+         
           <div class="mb-4">
             <label for="email" class="form-label">Email</label>
             <input type="email" id="email" class="form-control rounded-pill" formControlName="email" placeholder="Enter your email" required>
@@ -14,7 +14,7 @@
             </div>
           </div>
   
-          <!-- Password Field -->
+          
           <div class="mb-4">
             <label for="password" class="form-label">Password</label>
             <input type="password" id="password" class="form-control rounded-pill" formControlName="password" placeholder="Enter your password" required>
@@ -23,12 +23,12 @@
             </div>
           </div>
   
-          <!-- Submit Button -->
+          
           <div class="d-grid gap-2 mb-4">
             <button type="submit" class="btn btn-primary rounded-pill" [disabled]="loginForm.invalid">Sign In</button>
           </div>
   
-          <!-- Success and Error Messages -->
+          
           <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
           <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
   

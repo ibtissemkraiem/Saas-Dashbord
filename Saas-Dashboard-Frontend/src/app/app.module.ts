@@ -12,7 +12,7 @@ import { MainLayoutComponent } from './layouts/layouts/main-layout/main-layout.c
 import { AuthLayoutComponent } from './layouts/layouts/auth-layout/auth-layout.component';
 import { UserProfileComponent } from './user-profile/user-profile/user-profile.component';
 import { RouterModule } from '@angular/router';
-import { EditProfileComponent } from './user-profile/Edit-Profile/edit-profile/edit-profile.component';
+//import { EditProfileComponent } from './user-profile/Edit-Profile/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { EditProfileComponent } from './user-profile/Edit-Profile/edit-profile/e
     MainLayoutComponent,
     AuthLayoutComponent,
     UserProfileComponent,
-    EditProfileComponent
+    
   ],
   imports: [
     // other modules
