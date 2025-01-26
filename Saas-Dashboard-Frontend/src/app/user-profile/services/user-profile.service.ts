@@ -3,6 +3,16 @@ import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 
+
+
+
+interface PaginatedResponse {
+  data: any[];
+  total: number;
+  currentPage: number;
+  totalPages: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,6 +45,19 @@ export class UserProfileService  {
     return this.http.put(`${this.apiUrl}/${id}`,credentials,{headers})
 
   }
+
+
+  DeleteUser(id:any):Observable<any>{
+    const token = localStorage.getItem('token');
+    console.log(token)
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    return this.http.delete(`${this.apiUrl}/${id}`,{headers})
+
+  }
   uploadProfileImage(file:File):Observable<any>
 {
   const token = localStorage.getItem('token');
@@ -55,4 +78,26 @@ getUserProfile():Observable<any>{
   const userId = this.authService.getCurrentUserId();
   return this.getUserById(userId);
 }
+
+TotalUsers():Observable<any>{
+  const token = localStorage.getItem('token');
+    console.log(token)
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.get(`${this.apiUrl}/total-users`,{headers})
+
+}
+ AllUsers(page: number, limit: number):Observable<any>{
+  const token = localStorage.getItem('token');
+    console.log(token)
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.get<PaginatedResponse>(`${this.apiUrl}/?page=${page}&limit=${limit}`,{headers})
+
+}
+
 }

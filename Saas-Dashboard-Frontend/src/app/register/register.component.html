@@ -1,59 +1,63 @@
-<div class="register-container d-flex align-items-center justify-content-center">
-    <div class="register-card card">
-      <div class="card-header text-center py-3">
-        <h3 class="mb-0">Sign Up</h3>
-      </div>
-      <div class="card-body p-4">
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-          <!-- Username Field -->
-          <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" id="username" class="form-control rounded-pill" formControlName="username" placeholder="Enter your username">
-            <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" class="text-danger small">
-              Username is required and must be at least 4 characters long.
-            </div>
+<div class="register-container d-flex align-items-center justify-content-center vh-100">
+  <div class="register-card card shadow-lg">
+    <div class="card-header text-center py-3 bg-primary text-white">
+      <h3 class="mb-0">Sign Up</h3>
+    </div>
+    <div class="card-body p-4">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <!-- Username Field -->
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" id="username" class="form-control rounded-pill" formControlName="username" placeholder="Enter your username">
+          <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" class="text-danger small">
+            Username is required and must be at least 4 characters long.
           </div>
-  
-          <!-- Email Field -->
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" class="form-control rounded-pill" formControlName="email" placeholder="Enter your email">
-            <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-danger small">
-              Valid email is required.
-            </div>
+        </div>
+
+        <!-- Email Field -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" class="form-control rounded-pill" formControlName="email" placeholder="Enter your email">
+          <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-danger small">
+            Valid email is required.
           </div>
-  
-          <!-- Password Field -->
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" id="password" class="form-control rounded-pill" formControlName="password" placeholder="Enter your password">
-            <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-danger small">
-              Password is required and must be at least 6 characters long.
-            </div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" id="password" class="form-control rounded-pill" formControlName="password" placeholder="Enter your password">
+          <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-danger small">
+            Password is required and must be at least 6 characters long.
           </div>
-  
-          <!-- Confirm Password Field -->
-          <div class="mb-3">
-            <label for="confirmPassword" class="form-label">Confirm Password</label>
-            <input type="password" id="confirmPassword" class="form-control rounded-pill" formControlName="confirmPassword" placeholder="Confirm your password">
-            <div *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched" class="text-danger small">
-              Confirm Password is required.
-            </div>
-            <div *ngIf="registerForm.errors?.['mismatch']" class="text-danger small">
-              Passwords do not match.
-            </div>
+        </div>
+
+        <!-- Confirm Password Field -->
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <input type="password" id="confirmPassword" class="form-control rounded-pill" formControlName="confirmPassword" placeholder="Confirm your password">
+          <div *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched" class="text-danger small">
+            Confirm Password is required.
           </div>
-  
-          <!-- Submit Button -->
-          <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary rounded-pill" [disabled]="registerForm.invalid">Register</button>
+          <div *ngIf="registerForm.errors?.['mismatch']" class="text-danger small">
+            Passwords do not match.
           </div>
-  
-          <!-- Success and Error Messages -->
-          <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
-          <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
-        </form>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-grid gap-2 mb-3">
+          <button type="submit" class="btn btn-primary rounded-pill" [disabled]="registerForm.invalid">Register</button>
+        </div>
+
+        <!-- Success and Error Messages -->
+        <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
+        <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+      </form>
+
+      <!-- Footer Link -->
+      <div class="text-center mt-3">
+        <p class="mb-0">Already have an account? <a routerLink="/login" class="text-primary">Sign In</a></p>
       </div>
     </div>
   </div>
-  
+</div>

@@ -1,0 +1,70 @@
+.dashboard {
+  padding: 20px;
+
+  .dashboard-title {
+    text-align: center;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  .dashboard-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      flex: 1;
+      text-align: center;
+      transition: all 0.3s ease;
+
+      h3 {
+        font-size: 18px;
+        color: #555;
+        margin: 10px 0;
+      }
+
+      p {
+        font-size: 24px;
+        color: #007bff;
+        font-weight: bold;
+      }
+
+      i {
+        font-size: 36px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      &.total-users {
+        background: #e3f2fd;
+        i {
+          color: #2196f3;
+        }
+      }
+
+      &.total-sales {
+        background: #e8f5e9;
+        i {
+          color: #43a047;
+        }
+      }
+
+      &.recent-activity {
+        background: #fff9c4;
+        i {
+          color: #fbc02d;
+        }
+      }
+    }
+  }
+}

@@ -8,8 +8,17 @@ const bcrypt = require('bcrypt');
 
 const getUsers= async(req,res)=>{
     try{
-        const users = await User.find();
-        res.status(200).json(users);
+        const { page = 1, limit = 10 } = req.query;
+
+        const skip  =(page-1)*limit;
+        const users = await User.find().skip(skip).limit(Number(limit));
+        const total = await User.countDocuments();
+        res.json({
+            data: users,
+            total,
+            currentPage: Number(page),
+            totalPages: Math.ceil(total / limit),
+          });
 
 
 
@@ -79,7 +88,7 @@ const deleteUser = async(req, res)=>{
 
     }
 };
-
+//All users
 const getTotalUsers = async(req,res)=>{
     try{
         const totalUsers = await User.countDocuments();

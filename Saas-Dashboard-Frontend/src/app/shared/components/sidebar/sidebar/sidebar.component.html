@@ -1,41 +1,46 @@
 <aside class="sidebar" [class.collapsed]="isCollapsed">
-    <div class="sidebar-header">
-      <h2>Your Logo</h2>
-      <button class="toggle-btn" (click)="toggleSidebar()">☰</button>
-    </div>
-    <nav class="sidebar-nav">
-      <ul>
-        <li>
-          <a [routerLink]="['/dashboard']" routerLinkActive="active" class="bi bi-house-door">
-             Dashboard
-          </a>
-        </li>
-        <li>  
-            <a [routerLink]="['/profile',userId]" routerLinkActive="active" class="bi bi-person"> 
-            Profile
-          </a>
-        </li>
-        <li>
-          <a [routerLink]="['/Settings']" routerLinkActive="active" class="bi bi-gear">
-            Settings
-          </a>
-        </li>
-      <!--  <li>
-          <a href="/orders">
-            <i class="bi bi-bag"></i> Orders
-          </a>
-        </li>
-        <li>
-          <a href="/reports">
-            <i class="bi bi-bar-chart"></i> Reports
-          </a>
-        </li>
-        <li>
-          <a href="/logout">
-            <i class="bi bi-box-arrow-right"></i> Logout
-          </a>
-        </li>-->
-      </ul>
-    </nav>
-  </aside>
-  
+  <div class="sidebar-header">
+    <h2>Your Logo</h2>
+    <button class="toggle-btn" (click)="toggleSidebar()">☰</button>
+  </div>
+  <nav class="sidebar-nav">
+    <ul>
+      <li>
+        <a [routerLink]="['/dashboard']" routerLinkActive="active" class="bi bi-house-door">
+           Dashboard
+        </a>
+      </li>
+      <li>  
+          <a [routerLink]="['/profile',userId]" routerLinkActive="active" class="bi bi-person"> 
+          Profile
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/settings']" routerLinkActive="active" class="bi bi-gear">
+          Settings
+        </a>
+      </li>
+      <li>
+        <a href="/orders">
+          <i class="bi bi-bag"></i> Orders
+        </a>
+      </li>
+      <li>
+        <a href="/reports">
+          <i class="bi bi-bar-chart"></i> Reports
+        </a>
+      </li>
+    
+      <li>
+        <a [routerLink]="['/users']" routerLinkActive="active" class="bi bi-person-lines-fill">
+          Users
+        </a>
+      </li>
+      <li>
+        <a href="/logout">
+          <i class="bi bi-box-arrow-right"></i> Logout
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>

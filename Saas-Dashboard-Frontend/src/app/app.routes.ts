@@ -7,6 +7,7 @@ import { authGuard } from './auth.guard';
 import { AuthLayoutComponent } from './layouts/layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './layouts/layouts/main-layout/main-layout.component';
 import { UserProfileComponent } from './user-profile/user-profile/user-profile.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
 //import { EditProfileComponent } from './user-profile/Edit-Profile/edit-profile/edit-profile.component';
 
 
@@ -25,6 +26,7 @@ export const routes: Routes = [
         children: [
             { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
             { path: 'profile/:id', component: UserProfileComponent ,canActivate: [authGuard] },
+            { path: 'users', component: UsersListComponent ,canActivate: [authGuard] },
            // { path: 'EditProfile/:id', component: EditProfileComponent ,canActivate: [authGuard] },
            
         ]

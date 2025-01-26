@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './shared/components/sidebar/sidebar/sidebar.component';
 import { MainLayoutComponent } from './layouts/layouts/main-layout/main-layout.component';
@@ -33,7 +34,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    NgxPaginationModule
     
     
   ],
